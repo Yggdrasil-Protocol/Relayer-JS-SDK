@@ -1,4 +1,4 @@
-export namespace config {
+export namespace Config {
     // WS URL Constants
     export const BASE_WS_URL = "wss://feeds.yggdrasilprotocol.io";
     export const ENDPOINT = "/v1/ws";
