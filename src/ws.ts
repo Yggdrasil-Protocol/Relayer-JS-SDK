@@ -5,7 +5,7 @@ import { Events, WSEvents } from "./events";
 
 export namespace WS {
     export class RelayerWS extends EventEmitter<WSEvents.WsEventMap> {
-        private ws: WebSocket;
+        private ws?: WebSocket;
         private url: URL;
 
         private pingInterval: number;
@@ -22,10 +22,11 @@ export namespace WS {
             );
             this.pingInterval = Config.PING_INTERVAL;
             this.pingTimeout = Config.PING_TIMEOUT;
-            this.ws = new WebSocket(this.url);
         }
 
         public connect = (): void => {
+            this.ws = new WebSocket(this.url.toString());
+
             this.ws.addListener("open", () => {
                 console.log("Connection established");
 
@@ -49,16 +50,20 @@ export namespace WS {
         };
 
         private ping = (): void => {
+            if (!this.ws) {
+                throw new Error("Connection not established");
+            }
+
             this.ws.send("PING");
             console.log("Sent PING");
 
             this.pingTimoutID = setTimeout(() => {
-                this.ws.close();
+                this.ws?.close();
             }, this.pingTimeout);
         };
 
         public close = (): void => {
-            this.ws.close();
+            this.ws?.close();
             clearInterval(this.pingIntervalID as NodeJS.Timeout);
 
             console.log("Connection closed");
