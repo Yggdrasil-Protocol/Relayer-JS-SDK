@@ -4,6 +4,7 @@
   "description": "JS SDK for Node.js & the Browser for interacting with the Relayer WS API.",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "tsc & node dist/index.js",
     "build": "tsc",
     "test": "jest"
   },
@@ -22,5 +23,9 @@
     "jest": "^29.7.0",
     "ts-jest": "^29.2.4",
     "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "isomorphic-ws": "^5.0.0",
+    "ws": "^8.18.0"
   }
 }
