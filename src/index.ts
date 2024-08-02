@@ -1,8 +1,7 @@
-// import { WS } from "./ws";
+import { WS } from "./ws";
 
-export function hello(name: string): string {
-    return `Hello ${name}`;
-}
+export default WS.RelayerWS;
+Object.assign(module.exports, WS.RelayerWS);
 
 // const ws = new WS.RelayerWS(["SPOT:BTC_USDT"]);
 // ws.addListener("data", (e) => {
