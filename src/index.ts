@@ -1,6 +1,7 @@
 import { WS } from "./ws";
 
 export default WS.RelayerWS;
+module.exports = WS.RelayerWS;
 Object.assign(module.exports, WS.RelayerWS);
 
 // const ws = new WS.RelayerWS(["SPOT:BTC_USDT"]);

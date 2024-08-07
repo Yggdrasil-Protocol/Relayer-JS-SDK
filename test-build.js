@@ -1,4 +1,4 @@
-const RelayerWS = require("./dist").default;
+const RelayerWS = require("./dist");
 
 const ws = new RelayerWS(["SPOT:BTC_USDT"]);
 ws.addListener("data", (e) => {
@@ -11,6 +11,6 @@ ws.addListener("info", (e) => {
 
 setTimeout(() => {
     ws.close();
-}, 1000);
+}, 2000);
 
 ws.connect();
