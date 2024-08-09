@@ -9,9 +9,13 @@ export default [
         output: {
             name: "RelayerWS",
             file: pkg.browser,
-            format: "iife",
+            format: "umd",
             sourcemap: true,
         },
-        plugins: [resolve(), commonjs(), minify({ comments: false })],
+        plugins: [resolve({
+            browser: true,
+            preferBuiltins: false
+        }), commonjs(), minify({ comments: false }), 
+        ],
     },
 ];
