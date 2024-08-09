@@ -27,7 +27,7 @@ export namespace WS {
         public connect = (): void => {
             this.ws = new WebSocket(this.url.toString());
 
-            this.ws.addListener("open", () => {
+            this.ws.addEventListener("open", () => {
                 console.log("Connection established");
 
                 this.ping();
