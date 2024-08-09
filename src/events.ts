@@ -82,5 +82,7 @@ export namespace WSEvents {
     export type WsEventMap = {
         data: [Events.DataFeedEvent];
         info: [Events.InfoEvent];
+        open: [];
+        close: [];
     };
 }

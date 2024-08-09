@@ -27,11 +27,12 @@ export namespace WS {
         public connect = (): void => {
             this.ws = new WebSocket(this.url.toString());
 
-            this.ws.addEventListener("open", () => {
+            this.ws.addEventListener("open", (e) => {
                 console.log("Connection established");
 
                 this.ping();
                 this.pingIntervalID = setInterval(this.ping, this.pingInterval);
+                this.emit("open");
             });
 
             this.ws.addEventListener("message", (event) => {
@@ -46,6 +47,11 @@ export namespace WS {
                 } else {
                     Events.sendEvent(event.data, this);
                 }
+            });
+
+            this.ws.addEventListener("close", (e) => {
+                clearInterval(this.pingIntervalID as NodeJS.Timeout);
+                this.emit("close");
             });
         };
 
