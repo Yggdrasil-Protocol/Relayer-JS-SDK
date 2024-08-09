@@ -1,6 +1,6 @@
 {
   "name": "@yggdrasil-protocol/relayer-sdk",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "JS SDK for Node.js & the Browser for interacting with the Relayer WS API.",
   "keywords": [
     "Yggdrasil",
